@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio deserunt exercitationem explicabo labore
+        consequatur id molestiae vero laudantium velit. Aliquam alias, hic temporibus excepturi id suscipit maxime culpa
+        doloribus harum?</p>
+
+    <script src="https://js.sentry-cdn.com/ae1085d73eeb378b00f5f8aacb4811e7.min.js" crossorigin="anonymous"></script>
+    <script src="https://browser.sentry-cdn.com/7.100.0/bundle.tracing.min.js"
+        integrity="sha384-UYOt6OZnoMh+TIldEWwYWaaAThAnFLqlAnbrOba0tvn6OBGWk4uWseoFKVfUG2YR"
+        crossorigin="anonymous"></script>
+
+    <script>
+        Sentry.init({
+            dsn: "https://ae1085d73eeb378b00f5f8aacb4811e7@o4506695501611008.ingest.sentry.io/4506695661584384",
+
+            // Alternatively, use `process.env.npm_package_version` for a dynamic release version
+            // if your build tool supports it.
+            release: "my-project-name@2.3.12",
+            integrations: [
+                Sentry.browserTracingIntegration(),
+                Sentry.replayIntegration(),
+            ],
+
+            // Set tracesSampleRate to 1.0 to capture 100%
+            // of transactions for performance monitoring.
+            // We recommend adjusting this value in production
+            tracesSampleRate: 1.0,
+
+            // Set `tracePropagationTargets` to control for which URLs distributed tracing should be enabled
+            
+            // Capture Replay for 10% of all sessions,
+            // plus for 100% of sessions with an error
+            replaysSessionSampleRate: 0.1,
+            replaysOnErrorSampleRate: 1.0,
+        });
+        try {
+             let mystr = two + 2
+
+        } catch (e) {
+            Sentry.captureException(e)
+            console.log("error is ", e)
+        }
+    </script>
+
+</body>
+
+</html>
